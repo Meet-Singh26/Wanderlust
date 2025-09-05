@@ -42,7 +42,6 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 // Root
 app.get("/", (req, res) => {
-  // res.send("🌐 root is working");
   res.redirect("/listings");
 });
 
