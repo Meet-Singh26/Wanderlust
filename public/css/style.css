@@ -1,0 +1,175 @@
+body {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
+
+/* Navbar */
+.navbar {
+    height: 5rem;
+    background-color: white;
+}
+
+.fa-airbnb {
+    color: #fe424d;
+    font-size: 2rem;
+}
+
+.nav-link {
+    color: #222222 !important;
+}
+
+.nav-link:hover {
+    border-bottom: 1px solid #fe424d;
+    border-top: 1px solid #fe424d;
+    background-color: #ebebeb;
+    border-radius: 5px;
+}
+
+.signup:hover {
+    background-color: #ebebeb;
+    border-radius: 5px;
+    color: #fe424d !important;
+    opacity: 0.8;
+}
+
+.btn-search,
+.btn-search:hover {
+    background-color: #fe424d;
+    color: #fff;
+    border-radius: 25px;
+    padding: 0 1.5rem;
+}
+
+.btn-search i {
+    display: inline;
+    margin-right: 0.5rem;
+}
+
+.search-inp {
+    border-radius: 25px;
+    padding: 0.5rem 3rem;
+    border: 1px solid #fe424d;
+}
+
+/* Footer */
+.f-info-links a {
+    text-decoration: none;
+    color: #222222;
+    margin-right: 0.7rem;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+.f-info {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 8rem;
+    background-color: #ebebeb;
+    text-align: center;
+}
+
+.f-info-links,
+.f-info-socials,
+.f-info-brand {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-info-socials i {
+    font-size: 1.3rem;
+    margin-right: 0.9rem;
+}
+
+/* Cards */
+.listing-card {
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top {
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body {
+    padding: 0;
+}
+
+.row a {
+    text-decoration: none;
+}
+
+/* Overlay Effect on card */
+.card-img-overlay {
+    opacity: 0;
+}
+
+.card-img-overlay:hover {
+    opacity: 0.2;
+    background-color: white;
+}
+
+/* New page and Edit page */
+.add-btn,
+.update-btn {
+    background-color: #fe424d;
+    border: none;
+}
+
+/* Show page */
+.show-img {
+    height: 34vh;
+}
+
+.btns {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin: 25px 0 35px;
+}
+
+.btns .btn {
+    width: 7rem;
+}
+
+.delete-btn {
+    margin-left: 2rem;
+}
+
+.rating {
+    margin-bottom: 35px;
+}
+
+/* Filters on index page */
+#filters a {
+    text-decoration: none;
+    color: #222222;
+}
+
+.filter {
+    text-align: center;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    opacity: 0.7;
+}
+
+.filter:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.filter p {
+    font-size: 0.8rem;
+}

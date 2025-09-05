@@ -1,0 +1,98 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+    <body>
+        <div id="filters" class="d-flex overflow-auto flex-nowrap">
+            <a href="/listings?category=Beachfront">
+                <div class="filter">
+                    <div><i class="fas fa-umbrella-beach"></i></div>
+                    <p>Beachfront</p>
+                </div>
+            </a>
+            <a href="/listings?category=City+Stays">
+                <div class="filter">
+                    <div><i class="fas fa-city"></i></div>
+                    <p>City Stays</p>
+                </div>
+            </a>
+            <a href="/listings?category=Mountain+Getaways">
+                <div class="filter">
+                    <div><i class="fas fa-mountain"></i></div>
+                    <p>Mountain Getaways</p>
+                </div>
+            </a>
+            <a href="/listings?category=Historic+Homes">
+                <div class="filter">
+                    <div><i class="fas fa-landmark"></i></div>
+                    <p>Historic Homes</p>
+                </div>
+            </a>
+            <a href="/listings?category=Unique+Stays">
+                <div class="filter">
+                    <div><i class="fa-solid fa-rainbow"></i></div>
+                    <p>Unique Stays</p>
+                </div>
+            </a>
+            <a href="/listings?category=Safari+&+Wild">
+                <div class="filter">
+                    <div><i class="fas fa-paw"></i></div>
+                    <p>Safari & Wild</p>
+                </div>
+            </a>
+            <a href="/listings?category=Private+Islands">
+                <div class="filter">
+                    <div><i class="fa-solid fa-anchor-lock"></i></div>
+                    <p>Private Islands</p>
+                </div>
+            </a>
+            <a href="/listings?category=Countryside+Retreats">
+                <div class="filter">
+                    <div><i class="fas fa-tree"></i></div>
+                    <p>Countryside Retreats</p>
+                </div>
+            </a>
+            <a href="/listings?category=Pool+Villas">
+                <div class="filter">
+                    <div><i class="fas fa-swimming-pool"></i></div>
+                    <p>Pool Villas</p>
+                </div>
+            </a>
+            <a href="/listings?category=Lakefront">
+                <div class="filter">
+                    <div><i class="fa-solid fa-water"></i></div>
+                    <p>Lakefront</p>
+                </div>
+            </a>
+            <a href="/listings?category=Ski-in/out">
+                <div class="filter">
+                    <div><i class="fas fa-skiing"></i></div>
+                    <p>Ski-in/out</p>
+                </div>
+            </a>
+            <a href="/listings?category=Desert+Escapes">
+                <div class="filter">
+                    <div><i class="fas fa-sun"></i></div>
+                    <p>Desert Escapes</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+            <% for (listing of allListings){ %>
+                <a href="/listings/<%= listing._id %>">
+                    <div class="card col listing-card">
+                        <img src="<%= listing.image.url %>" class="card-img-top" style="height: 20rem;"
+                            alt="listingImage">
+                        <div class="card-img-overlay"></div> <!--For overlay effect on card-->
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= listing.title %>
+                            </h5>
+                            <p class="card-text">
+                                &#8377; <%= listing.price.toLocaleString("en-IN") %> / night
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                <% } %>
+        </div>
+    </body>
