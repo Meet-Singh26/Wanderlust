@@ -1,4 +1,5 @@
 const axios = require("axios");
+const FormData = require("form-data");
 
 async function uploadToImgBB(file) {
   if (!process.env.IMGBB_API_KEY) {
@@ -8,15 +9,21 @@ async function uploadToImgBB(file) {
   // Convert buffer to base64
   const base64Image = file.buffer.toString("base64");
 
+  // Create a new form and append the image data to it
+  const form = new FormData();
+  form.append("image", base64Image);
+
   try {
     const response = await axios.post(
       "https://api.imgbb.com/1/upload",
-      null, // Pass formData as null
+      form, // The form data is now the body of the request
       {
+        headers: {
+          ...form.getHeaders(), // Set the correct multipart/form-data headers
+        },
         params: {
           // Pass API key as a query parameter in the URL
           key: process.env.IMGBB_API_KEY,
-          image: base64Image,
         },
         timeout: 25000, // Keep the increased timeout (25 seconds)
         maxBodyLength: Infinity,
