@@ -41,9 +41,10 @@ app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
 // Root
-// app.get("/", (req, res) => {
-//   res.send("🌐 root is working");
-// });
+app.get("/", (req, res) => {
+  // res.send("🌐 root is working");
+  res.redirect("/listings");
+});
 
 // Mongo Sessions
 const store = MongoStore.create({
