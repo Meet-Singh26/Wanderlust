@@ -26,24 +26,19 @@ module.exports.renderNewForm = (req, res) => {
     res.render("listings/new.ejs");
 };
 
-module.exports.createListing = async (req, res, next) => {
+module.exports.createListing = async (req, res) => {
     const newListing = new Listing(req.body.listing);
     newListing.owner = req.user._id;
     if (req.file) {
         try {
-            const imgbbUrl = await uploadToImgBB(req.file.path);
+            const imgbbUrl = await uploadToImgBB(req.file);
             newListing.image = {
                 url: imgbbUrl,
-                filename: req.file.filename,
+                filename: req.file.originalname,
             };
         } catch (uploadError) {
             req.flash("error", "Image upload failed: " + uploadError.message);
             return res.redirect("/listings/new");
-        } finally {
-            // Ensure local file is deleted even if ImgBB upload fails
-            if (fs.existsSync(req.file.path)) {
-                fs.unlinkSync(req.file.path);
-            }
         }
     }
     await newListing.save();
@@ -65,23 +60,18 @@ module.exports.updateListing = async (req, res) => {
         ...req.body.listing,
     });
 
-    if (typeof req.file !== "undefined") {
+    if (req.file) {
         try {
-            const imgbbUrl = await uploadToImgBB(req.file.path);
+            const imgbbUrl = await uploadToImgBB(req.file);
             editListing.image = {
                 url: imgbbUrl,
-                filename: req.file.filename,
+                filename: req.file.originalname,
             };
             await editListing.save();
         } catch (uploadError) {
             // Flash an error and redirect, or send a specific error message
             req.flash("error", "Image upload failed: " + uploadError.message);
             return res.redirect("/listings/new");
-        } finally {
-            // Ensure local file is deleted even if ImgBB upload fails
-            if (fs.existsSync(req.file.path)) {
-                fs.unlinkSync(req.file.path);
-            }
         }
     }
     req.flash("success", "Listing Updated Successfully!");
